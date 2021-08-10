@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Disciple Tools - Porch Template
- * Plugin URI: https://github.com/DiscipleTools/disciple-tools-porch-template
+ * Plugin Name: CityChurch Tools (English)
+ * Plugin URI: https://github.com/ChrisChasm/citychurch-tools-english
  * Description: This plugin adds a front porch to a Disciple Tools system.
- * Text Domain: disciple-tools-porch-template
+ * Text Domain: city-church-tools-english
  * Domain Path: /languages
  * Version:  0.1
  * Author URI: https://github.com/DiscipleTools
- * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-porch-template
+ * GitHub Plugin URI: https://github.com/ChrisChasm/citychurch-tools-english
  * Requires at least: 4.7.0
  * (Requires 4.7+ because of the integration of the REST API at 4.7 and the security requirements of this milestone version.)
  * Tested up to: 5.6
@@ -17,30 +17,6 @@
  * @license GPL-2.0 or later
  *          https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-/***********************************************************************************************************************
-/***********************************************************************************************************************
- * REFACTOR THIS PLUGIN!
- * This entire template plugin can be converted to your project by finding and replacing the follow strings throughout
- * the plugin folder. Accomplish the @todo tasks below.
- *
- * (full url of your github repo location)
- * @example https://github.com/YourGithubAccount/your-project-name
- * (user account and repo name on Github)
- * @example ACCOUNT-REPO-SLUG = YourGithubAccount/your-project-name
- * (repo name of your project on Github)
- * @example REPO-SLUG = your-project-name
- *
- * @todo Rename file name in the root folder called [ disciple-tools-porch-template.php ] to your repo slug name, i.e. [ REPO-SLUG ].php.
- *
- * @todo find/replace string [ DiscipleTools/disciple-tools-porch-template ] with your [ ACCOUNT-REPO-SLUG ]
- *
- * Find and Replace the following strings with your custom strings.
- * @todo find/replace string [ Porch Template ] with [ Your Project Name ]
- * @todo find/replace string [ Disciple_Tools_Porch_Template ] with [ Your_Project_Name ]
- * @todo find/replace string [ disciple-tools-porch-template ] with [ your-project-name ]
- * @todo find/replace string [ dt_porch_template ] with [ your_project_name ]
-***********************************************************************************************************************/
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -54,8 +30,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @access public
  * @return object|bool
  */
-function dt_porch_template() {
-    $dt_porch_template_required_dt_theme_version = '1.8.1';
+function cc_tools_english() {
+    $cc_tools_english_required_dt_theme_version = '1.8.1';
     $wp_theme = wp_get_theme();
     $version = $wp_theme->version;
 
@@ -63,8 +39,8 @@ function dt_porch_template() {
      * Check if the Disciple.Tools theme is loaded and is the latest required version
      */
     $is_theme_dt = strpos( $wp_theme->get_template(), "disciple-tools-theme" ) !== false || $wp_theme->name === "Disciple Tools";
-    if ( $is_theme_dt && version_compare( $version, $dt_porch_template_required_dt_theme_version, "<" ) ) {
-        add_action( 'admin_notices', 'dt_porch_template_hook_admin_notice' );
+    if ( $is_theme_dt && version_compare( $version, $cc_tools_english_required_dt_theme_version, "<" ) ) {
+        add_action( 'admin_notices', 'cc_tools_english_hook_admin_notice' );
         add_action( 'wp_ajax_dismissed_notice_handler', 'dt_hook_ajax_notice_handler' );
         return false;
     }
@@ -80,7 +56,7 @@ function dt_porch_template() {
 
     return DT_Porch_Template::instance();
 }
-add_action( 'after_setup_theme', 'dt_porch_template', 20 );
+add_action( 'after_setup_theme', 'cc_tools_english', 20 );
 
 /**
  * Singleton class for setting up the plugin.
@@ -100,55 +76,13 @@ class DT_Porch_Template {
 
     private function __construct() {
 
-        /***************************************************************************************************************
-        /***************************************************************************************************************
-         * @todo STEP 1: CHOOSE HOME PAGE STYLE
-         * 8 starter sites are listed below. Uncomment the loader file to show the site style. Choose only 1 at a time.
-         *
-         * @todo STEP 2: ONCE A STYLE IS SELECTED, REMOVE ADDITIONAL LINES AND DELETE CORRESPONDING FOLDERS
-         * @todo STEP 3: EDIT THE BODY CONTENT OF THE SELECTED STYLE IN THE `body.php` file.
-         **************************************************************************************************************/
-//        require_once( 'home-1/loader.php' ); /* Pray4Movement */
         require_once( 'home-2/loader.php' ); /* Simple, Big images, White and Image */
-//        require_once( 'home-3/loader.php'); /* Parallax, White/Green, thin sections, sticky top nav */
-//        require_once( 'home-4/loader.php' ); /* Large sections, white/light blue, */
-//        require_once( 'home-5/loader.php' ); /* White/blue/grey, big sections, hover effects/animations */
-//        require_once( 'home-6/loader.php'); /* greeen/white, simple, bold */
-//        require_once( 'home-7/loader.php'); /* single image, full screen */
-//        require_once( 'home-8/loader.php'); /* single looping video, full screen */
 
-//        require_once( 'home-blank/loader.php'); /* blank setup. You can drop a single page site into this folder. */
-
-
-
-        /***************************************************************************************************************
-        /***************************************************************************************************************
-         * @todo ADDITIONAL STEP: SELECT LOGGED IN PAGE STYLE
-         * This page style allows a person to register to the site, and get a custom profile page, without giving
-         * them access to disciple tools. This page is recommended to be used with the custom login plugin so that
-         * a registered role can be applied.
-         *
-         * @use Use this to give a partner a dashboard on the project without giving them access to the entire DT system.
-         * @use Allows you to collect data from a user without giving them full Disciple Tools access.
-         *
-         * Remove all of these if a logged in page is not required.
-         **************************************************************************************************************/
-        require_once( 'logged-in-1/loader.php' );
-
-
-        /***************************************************************************************************************
-        /***************************************************************************************************************
-         * @todo ADDITIONAL STEP: CONFIGURE REQUIRED PLUGINS
-         * The `config-required-plugins.php` file triggers a recommendation in the admin area to also require other plugins
-         * when this plugin is enabled. One key plugin is the `disciple-tools-custom-login' plugin to help with the
-         * logged in user experience.
-         **************************************************************************************************************/
         if ( is_admin() ) {
             require_once( 'support/required-plugins/class-tgm-plugin-activation.php' );
             require_once( 'support/required-plugins/config-required-plugins.php' );
         }
-
-
+        
         if ( is_admin() ){
             add_filter( 'plugin_row_meta', [ $this, 'plugin_description_links' ], 10, 4 ); // admin plugin page description
         }
@@ -199,7 +133,7 @@ class DT_Porch_Template {
      * @return void
      */
     public function i18n() {
-        $domain = 'disciple-tools-porch-template';
+        $domain = 'city-church-tools-english';
         load_plugin_textdomain( $domain, false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). 'support/languages' );
     }
 
@@ -211,7 +145,7 @@ class DT_Porch_Template {
      * @return string
      */
     public function __toString() {
-        return 'disciple-tools-porch-template';
+        return 'city-church-tools-english';
     }
 
     /**
@@ -246,7 +180,7 @@ class DT_Porch_Template {
      * @access public
      */
     public function __call( $method = '', $args = array() ) {
-        _doing_it_wrong( "dt_porch_template::" . esc_html( $method ), 'Method does not exist.', '0.1' );
+        _doing_it_wrong( "cc_tools_english::" . esc_html( $method ), 'Method does not exist.', '0.1' );
         unset( $method, $args );
         return null;
     }
@@ -258,28 +192,28 @@ register_activation_hook( __FILE__, [ 'DT_Porch_Template', 'activation' ] );
 register_deactivation_hook( __FILE__, [ 'DT_Porch_Template', 'deactivation' ] );
 
 
-if ( ! function_exists( 'dt_porch_template_hook_admin_notice' ) ) {
-    function dt_porch_template_hook_admin_notice() {
-        global $dt_porch_template_required_dt_theme_version;
+if ( ! function_exists( 'cc_tools_english_hook_admin_notice' ) ) {
+    function cc_tools_english_hook_admin_notice() {
+        global $cc_tools_english_required_dt_theme_version;
         $wp_theme = wp_get_theme();
         $current_version = $wp_theme->version;
-        $message = "'Disciple Tools - Porch Template' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple Tools' theme or make sure it is latest version.";
+        $message = "'Disciple Tools -CityChurch Tools (English)' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple Tools' theme or make sure it is latest version.";
         if ( $wp_theme->get_template() === "disciple-tools-theme" ){
-            $message .= ' ' . sprintf( esc_html( 'Current Disciple Tools version: %1$s, required version: %2$s' ), esc_html( $current_version ), esc_html( $dt_porch_template_required_dt_theme_version ) );
+            $message .= ' ' . sprintf( esc_html( 'Current Disciple Tools version: %1$s, required version: %2$s' ), esc_html( $current_version ), esc_html( $cc_tools_english_required_dt_theme_version ) );
         }
         // Check if it's been dismissed...
-        if ( ! get_option( 'dismissed-disciple-tools-porch-template', false ) ) { ?>
-            <div class="notice notice-error notice-disciple-tools-porch-template is-dismissible" data-notice="disciple-tools-porch-template">
+        if ( ! get_option( 'dismissed-city-church-tools-english', false ) ) { ?>
+            <div class="notice notice-error notice-city-church-tools-english is-dismissible" data-notice="city-church-tools-english">
                 <p><?php echo esc_html( $message );?></p>
             </div>
             <script>
                 jQuery(function($) {
-                    $( document ).on( 'click', '.notice-disciple-tools-porch-template .notice-dismiss', function () {
+                    $( document ).on( 'click', '.notice-city-church-tools-english .notice-dismiss', function () {
                         $.ajax( ajaxurl, {
                             type: 'POST',
                             data: {
                                 action: 'dismissed_notice_handler',
-                                type: 'disciple-tools-porch-template',
+                                type: 'city-church-tools-english',
                                 security: '<?php echo esc_html( wp_create_nonce( 'wp_rest_dismiss' ) ) ?>'
                             }
                         })
@@ -311,7 +245,7 @@ if ( ! function_exists( "dt_hook_ajax_notice_handler" )){
  * This section runs the remote plugin updating service, so you can issue distributed updates to your plugin
  *
  * @note See the instructions for version updating to understand the steps involved.
- * @link https://github.com/DiscipleTools/disciple-tools-porch-template/wiki/Configuring-Remote-Updating-System
+ * @link https://github.com/ChrisChasm/citychurch-tools-english/wiki/Configuring-Remote-Updating-System
  *
  * @todo Enable this section with your own hosted file
  * @todo An example of this file can be found in (version-control.json)
@@ -336,9 +270,9 @@ if ( ! function_exists( "dt_hook_ajax_notice_handler" )){
 //        }
 //        if ( class_exists( 'Puc_v4_Factory' ) ){
 //            Puc_v4_Factory::buildUpdateChecker(
-//                'https://raw.githubusercontent.com/DiscipleTools/disciple-tools-porch-template/master/version-control.json',
+//                'https://raw.githubusercontent.com/ChrisChasm/citychurch-tools-english/master/version-control.json',
 //                __FILE__,
-//                'disciple-tools-porch-template'
+//                'city-church-tools-english'
 //            );
 //
 //        }

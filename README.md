@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/DiscipleTools/disciple-tools-porch-template.svg?branch=master)](https://travis-ci.com/DiscipleTools/disciple-tools-porch-template)
+[![Build Status](https://travis-ci.com/ChrisChasm/citychurch-tools-english.svg?branch=master)](https://travis-ci.com/ChrisChasm/citychurch-tools-english)
 
-# Disciple Tools - Porch Template
+# Disciple Tools -CityChurch Tools (English)
 
 Description Description Description Description Description Description Description
 Description Description Description Description Description Description Description
@@ -38,11 +38,11 @@ Purpose purpose purpose purpose purpose purpose purpose purpose purpose purpose 
 ## Contribution
 
 Contributions welcome. You can report issues and bugs in the
-[Issues](https://github.com/DiscipleTools/disciple-tools-porch-template/issues) section of the repo. You can present ideas
-in the [Discussions](https://github.com/DiscipleTools/disciple-tools-porch-template/discussions) section of the repo. And
-code contributions are welcome using the [Pull Request](https://github.com/DiscipleTools/disciple-tools-porch-template/pulls)
+[Issues](https://github.com/ChrisChasm/citychurch-tools-english/issues) section of the repo. You can present ideas
+in the [Discussions](https://github.com/ChrisChasm/citychurch-tools-english/discussions) section of the repo. And
+code contributions are welcome using the [Pull Request](https://github.com/ChrisChasm/citychurch-tools-english/pulls)
 system for git. For a more details on contribution see the
-[contribution guidelines](https://github.com/DiscipleTools/disciple-tools-porch-template/blob/master/CONTRIBUTING.md).
+[contribution guidelines](https://github.com/ChrisChasm/citychurch-tools-english/blob/master/CONTRIBUTING.md).
 
 
 ## Screenshots
