@@ -57,7 +57,7 @@ add_action( 'tgmpa_register', function () {
      * Only uncomment the strings in the config array if you want to customize the strings.
      */
     $config = array(
-        'id'           => 'cc_tools_english',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+        'id'           => 'l1a_porch',                 // Unique ID for hashing notices for multiple instances of TGMPA.
         'default_path' => '/includes/plugins/',     // Default absolute path to bundled plugins.
         'menu'         => 'tgmpa-install-plugins', // Menu slug.
         'parent_slug'  => 'plugins.php',            // Parent menu slug.

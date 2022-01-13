@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/ChrisChasm/citychurch-tools-english.svg?branch=master)](https://travis-ci.com/ChrisChasm/citychurch-tools-english)
+[![Build Status](https://travis-ci.com/ChrisChasm/l1a-porch.svg?branch=master)](https://travis-ci.com/ChrisChasm/l1a-porch)
 
 # Disciple Tools -CityChurch Tools (English)
 
@@ -38,11 +38,11 @@ Purpose purpose purpose purpose purpose purpose purpose purpose purpose purpose 
 ## Contribution
 
 Contributions welcome. You can report issues and bugs in the
-[Issues](https://github.com/ChrisChasm/citychurch-tools-english/issues) section of the repo. You can present ideas
-in the [Discussions](https://github.com/ChrisChasm/citychurch-tools-english/discussions) section of the repo. And
-code contributions are welcome using the [Pull Request](https://github.com/ChrisChasm/citychurch-tools-english/pulls)
+[Issues](https://github.com/ChrisChasm/l1a-porch/issues) section of the repo. You can present ideas
+in the [Discussions](https://github.com/ChrisChasm/l1a-porch/discussions) section of the repo. And
+code contributions are welcome using the [Pull Request](https://github.com/ChrisChasm/l1a-porch/pulls)
 system for git. For a more details on contribution see the
-[contribution guidelines](https://github.com/ChrisChasm/citychurch-tools-english/blob/master/CONTRIBUTING.md).
+[contribution guidelines](https://github.com/ChrisChasm/l1a-porch/blob/master/CONTRIBUTING.md).
 
 
 ## Screenshots

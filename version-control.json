@@ -1,26 +1,26 @@
 {
 
-  "name": "Disciple Tools -CityChurch Tools (English)",
+  "name": "Love One Another - Porch",
   "version": "0.1",
   "last_updated": "2021-03",
   "author": "Disciple Tools",
   "author_homepage": "https://disciple.tools",
   "git_owner": "DiscipleTools",
   "git_repo": "city-church-tools-english",
-  "download_url": "https://github.com/ChrisChasm/citychurch-tools-english/releases/latest/download/city-church-tools-english.zip",
-  "homepage": "https://github.com/ChrisChasm/citychurch-tools-english",
-  "issues_url": "https://github.com/ChrisChasm/citychurch-tools-english/issues",
-  "projects_url": "https://github.com/ChrisChasm/citychurch-tools-english/projects/1",
-  "discussions_url": "https://github.com/ChrisChasm/citychurch-tools-english/discussions",
-  "wiki_url": "https://github.com/ChrisChasm/citychurch-tools-english/wiki",
-  "license_url": "https://raw.githubusercontent.com/ChrisChasm/citychurch-tools-english/master/LICENSE",
-  "readme_url": "https://raw.githubusercontent.com/ChrisChasm/citychurch-tools-english/master/support/documentation/community/starter-readme.md",
+  "download_url": "https://github.com/ChrisChasm/l1a-porch/releases/latest/download/city-church-tools-english.zip",
+  "homepage": "https://github.com/ChrisChasm/l1a-porch",
+  "issues_url": "https://github.com/ChrisChasm/l1a-porch/issues",
+  "projects_url": "https://github.com/ChrisChasm/l1a-porch/projects/1",
+  "discussions_url": "https://github.com/ChrisChasm/l1a-porch/discussions",
+  "wiki_url": "https://github.com/ChrisChasm/l1a-porch/wiki",
+  "license_url": "https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/LICENSE",
+  "readme_url": "https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/support/documentation/community/starter-readme.md",
   "requires": "4.7",
   "tested": "5.7",
   "upgrade_notice": "Upgrade to get the latest features.",
   "banners": {
-    "low": "https://raw.githubusercontent.com/ChrisChasm/citychurch-tools-english/master/documentation/banner.png",
-    "high": "https://raw.githubusercontent.com/ChrisChasm/citychurch-tools-english/master/documentation/banner.png"
+    "low": "https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/documentation/banner.png",
+    "high": "https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/documentation/banner.png"
   },
   "sections": {
     "description": "Kick start your Disciple.Tools plugin project with this template! This plugin is a collection of our best practices and code bases for creating Disciple.Tools plugins.",

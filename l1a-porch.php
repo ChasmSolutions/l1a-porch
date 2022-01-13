@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: CityChurch Tools (English)
- * Plugin URI: https://github.com/ChrisChasm/citychurch-tools-english
+ * Plugin URI: https://github.com/ChrisChasm/l1a-porch
  * Description: This plugin adds a front porch to a Disciple Tools system.
  * Text Domain: city-church-tools-english
  * Domain Path: /languages
  * Version:  0.1
  * Author URI: https://github.com/DiscipleTools
- * GitHub Plugin URI: https://github.com/ChrisChasm/citychurch-tools-english
+ * GitHub Plugin URI: https://github.com/ChrisChasm/l1a-porch
  * Requires at least: 4.7.0
  * (Requires 4.7+ because of the integration of the REST API at 4.7 and the security requirements of this milestone version.)
  * Tested up to: 5.6
@@ -24,14 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Gets the instance of the `DT_Porch_Template` class.
+ * Gets the instance of the `L1a_Porch` class.
  *
  * @since  0.1
  * @access public
  * @return object|bool
  */
-function cc_tools_english() {
-    $cc_tools_english_required_dt_theme_version = '1.8.1';
+function l1a_porch() {
+    $l1a_porch_required_dt_theme_version = '1.8.1';
     $wp_theme = wp_get_theme();
     $version = $wp_theme->version;
 
@@ -39,8 +39,8 @@ function cc_tools_english() {
      * Check if the Disciple.Tools theme is loaded and is the latest required version
      */
     $is_theme_dt = strpos( $wp_theme->get_template(), "disciple-tools-theme" ) !== false || $wp_theme->name === "Disciple Tools";
-    if ( $is_theme_dt && version_compare( $version, $cc_tools_english_required_dt_theme_version, "<" ) ) {
-        add_action( 'admin_notices', 'cc_tools_english_hook_admin_notice' );
+    if ( $is_theme_dt && version_compare( $version, $l1a_porch_required_dt_theme_version, "<" ) ) {
+        add_action( 'admin_notices', 'l1a_porch_hook_admin_notice' );
         add_action( 'wp_ajax_dismissed_notice_handler', 'dt_hook_ajax_notice_handler' );
         return false;
     }
@@ -54,9 +54,9 @@ function cc_tools_english() {
         require_once get_template_directory() . '/dt-core/global-functions.php';
     }
 
-    return DT_Porch_Template::instance();
+    return L1a_Porch::instance();
 }
-add_action( 'after_setup_theme', 'cc_tools_english', 20 );
+add_action( 'after_setup_theme', 'l1a_porch', 20 );
 
 /**
  * Singleton class for setting up the plugin.
@@ -64,7 +64,7 @@ add_action( 'after_setup_theme', 'cc_tools_english', 20 );
  * @since  0.1
  * @access public
  */
-class DT_Porch_Template {
+class L1a_Porch {
 
     private static $_instance = null;
     public static function instance() {
@@ -79,10 +79,10 @@ class DT_Porch_Template {
         require_once( 'home-2/loader.php' ); /* Simple, Big images, White and Image */
 
         if ( is_admin() ) {
-            require_once( 'support/required-plugins/class-tgm-plugin-activation.php' );
-            require_once( 'support/required-plugins/config-required-plugins.php' );
+//            require_once( 'support/required-plugins/class-tgm-plugin-activation.php' );
+//            require_once( 'support/required-plugins/config-required-plugins.php' );
         }
-        
+
         if ( is_admin() ){
             add_filter( 'plugin_row_meta', [ $this, 'plugin_description_links' ], 10, 4 ); // admin plugin page description
         }
@@ -180,7 +180,7 @@ class DT_Porch_Template {
      * @access public
      */
     public function __call( $method = '', $args = array() ) {
-        _doing_it_wrong( "cc_tools_english::" . esc_html( $method ), 'Method does not exist.', '0.1' );
+        _doing_it_wrong( "l1a_porch::" . esc_html( $method ), 'Method does not exist.', '0.1' );
         unset( $method, $args );
         return null;
     }
@@ -188,18 +188,18 @@ class DT_Porch_Template {
 
 
 // Register activation hook.
-register_activation_hook( __FILE__, [ 'DT_Porch_Template', 'activation' ] );
-register_deactivation_hook( __FILE__, [ 'DT_Porch_Template', 'deactivation' ] );
+register_activation_hook( __FILE__, [ 'L1a_Porch', 'activation' ] );
+register_deactivation_hook( __FILE__, [ 'L1a_Porch', 'deactivation' ] );
 
 
-if ( ! function_exists( 'cc_tools_english_hook_admin_notice' ) ) {
-    function cc_tools_english_hook_admin_notice() {
-        global $cc_tools_english_required_dt_theme_version;
+if ( ! function_exists( 'l1a_porch_hook_admin_notice' ) ) {
+    function l1a_porch_hook_admin_notice() {
+        global $l1a_porch_required_dt_theme_version;
         $wp_theme = wp_get_theme();
         $current_version = $wp_theme->version;
         $message = "'Disciple Tools -CityChurch Tools (English)' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple Tools' theme or make sure it is latest version.";
         if ( $wp_theme->get_template() === "disciple-tools-theme" ){
-            $message .= ' ' . sprintf( esc_html( 'Current Disciple Tools version: %1$s, required version: %2$s' ), esc_html( $current_version ), esc_html( $cc_tools_english_required_dt_theme_version ) );
+            $message .= ' ' . sprintf( esc_html( 'Current Disciple Tools version: %1$s, required version: %2$s' ), esc_html( $current_version ), esc_html( $l1a_porch_required_dt_theme_version ) );
         }
         // Check if it's been dismissed...
         if ( ! get_option( 'dismissed-city-church-tools-english', false ) ) { ?>
@@ -245,7 +245,7 @@ if ( ! function_exists( "dt_hook_ajax_notice_handler" )){
  * This section runs the remote plugin updating service, so you can issue distributed updates to your plugin
  *
  * @note See the instructions for version updating to understand the steps involved.
- * @link https://github.com/ChrisChasm/citychurch-tools-english/wiki/Configuring-Remote-Updating-System
+ * @link https://github.com/ChrisChasm/l1a-porch/wiki/Configuring-Remote-Updating-System
  *
  * @todo Enable this section with your own hosted file
  * @todo An example of this file can be found in (version-control.json)
@@ -270,7 +270,7 @@ if ( ! function_exists( "dt_hook_ajax_notice_handler" )){
 //        }
 //        if ( class_exists( 'Puc_v4_Factory' ) ){
 //            Puc_v4_Factory::buildUpdateChecker(
-//                'https://raw.githubusercontent.com/ChrisChasm/citychurch-tools-english/master/version-control.json',
+//                'https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/version-control.json',
 //                __FILE__,
 //                'city-church-tools-english'
 //            );
