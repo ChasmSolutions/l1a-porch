@@ -2,4 +2,4 @@
 {translation-domain}-{localisation}.po
 
 ex:
-city-church-tools-english-fr_FR.po
+l1a-porch-fr_FR.po

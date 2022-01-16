@@ -2,7 +2,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 /**
- * Lead form REST API for saving to Disciple Tools
+ * Lead form REST API for saving to Disciple.Tools
  *
  * @version 1
  */
@@ -60,38 +60,159 @@ if ( ! class_exists( 'L1a_Porch_Lead_Form' ) ) {
             }
         }
 
+//        public function save_newsletter( $data ) {
+//            $content = get_option( 'landing_content' );
+//
+//            $data = dt_recursive_sanitize_array( $data );
+//            $email = $data['email'] ?? '';
+//            $first_name = $data['fname'] ?? '';
+//            $last_name = $data['lname'] ?? '';
+//
+//            if ( empty( $email ) && empty( $phone ) ){
+//                return new WP_Error( __METHOD__, 'Must have either phone number or email address to create record.', [ 'status' => 400 ] );
+//            }
+//
+//            //API KEY and LIST ID here
+//            $api_key = $content['mailchimp_api_key'];
+//            $list_id = $content['mailchimp_list_id'];
+//
+//            $member_id = md5( strtolower( $email ) );
+//            $data_center = substr( $api_key, strpos( $api_key, '-' ) +1 );
+//            $url = 'https://' . $data_center . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/' . $member_id;
+//
+//            $json = json_encode([
+//                'email_address' => $email,
+//                'status'        => 'subscribed', // "subscribed","unsubscribed","cleaned","pending"
+//                'merge_fields'  => [
+//                    'FNAME'     => $first_name,
+//                    'LNAME'     => $last_name,
+//                ]
+//            ]);
+//
+//            $ch = curl_init( $url );
+//
+//            curl_setopt( $ch, CURLOPT_USERPWD, 'user:' . $api_key );
+//            curl_setopt( $ch, CURLOPT_HTTPHEADER, [ 'Content-Type: application/json' ] );
+//            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+//            curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
+//            curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'PUT' );
+//            curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+//            curl_setopt( $ch, CURLOPT_POSTFIELDS, $json );
+//            $result = curl_exec( $ch );
+//
+//
+//            $http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+//            curl_close( $ch );
+//
+//            return $result;
+//        }
+//
+//        public function save_contact_lead( $data ) {
+//            $content = get_option( 'landing_content' );
+//            $fields = [];
+//
+//            $data = dt_recursive_sanitize_array( $data );
+//            $email = $data['email'] ?? '';
+//            $phone = $data['phone'] ?? '';
+//            $name = $data['name'] ?? '';
+//            $comment = $data['comment'] ?? '';
+//
+//            if ( empty( $email ) && empty( $phone ) ){
+//                return new WP_Error( __METHOD__, 'Must have either phone number or email address to create record.', [ 'status' => 400 ] );
+//            }
+//
+//            if ( ! empty( $last_name ) ) {
+//                $full_name = $name . ' ' . $last_name;
+//            } else {
+//                $full_name = $name;
+//            }
+//
+//            $fields['title'] = $full_name;
+//            if ( ! empty( $email ) ) {
+//                $fields['contact_email'] = [
+//                    [ "value" => $email ]
+//                ];
+//            }
+//            if ( ! empty( $phone ) ) {
+//                $fields['contact_phone'] = [
+//                    [ "value" => $phone ]
+//                ];
+//            }
+//            $fields['type'] = 'access';
+//
+//            if ( isset( $content['assigned_user_for_followup'] ) && ! empty( $content['assigned_user_for_followup'] ) ) {
+//                $fields['assigned_to'] = $content['assigned_user_for_followup'];
+//            }
+//
+//            if ( isset( $content['status_for_subscriptions'] ) && ! empty( $content['status_for_subscriptions'] ) ) {
+//                $fields['overall_status'] = $content['status_for_subscriptions'];
+//            }
+//
+//            if ( isset( $content['source_for_subscriptions'] ) && ! empty( $content['source_for_subscriptions'] ) ) {
+//                $fields['sources'] = [
+//                    "values" => [
+//                        [ "value" => $content['source_for_subscriptions'] ],
+//                    ]
+//                ];
+//            }
+//
+//
+//            $fields['notes'] = [];
+//            // geolocate IP address
+//            if ( DT_Ipstack_API::get_key() ) {
+//                $result = DT_Ipstack_API::geocode_current_visitor();
+//                // @todo geocode ip address
+//                $fields['notes'][] = serialize( $result );
+//            } else {
+//
+//                $fields['notes'][] = DT_Ipstack_API::get_real_ip_address();
+//            }
+//
+//            $fields['notes'][] = $comment;
+//
+//            $contact = DT_Posts::create_post( 'contacts', $fields, true, false );
+//            if ( ! is_wp_error( $contact ) ) {
+//                $contact_id = $contact['ID'];
+//            } else {
+//                return new WP_Error( __METHOD__, 'Could not create DT record.', [ 'status' => 400, 'error_data' => $contact ] );
+//            }
+//
+//            return $data;
+//        }
+
+
         public function save_newsletter( $data ) {
             $content = get_option( 'landing_content' );
 
             $data = dt_recursive_sanitize_array( $data );
             $email = $data['email'] ?? '';
-            $first_name = $data['fname'] ?? '';
-            $last_name = $data['lname'] ?? '';
+            $fname = $data['fname'] ?? '';
+            $lname = $data['lname'] ?? '';
 
             if ( empty( $email ) && empty( $phone ) ){
                 return new WP_Error( __METHOD__, 'Must have either phone number or email address to create record.', [ 'status' => 400 ] );
             }
 
             //API KEY and LIST ID here
-            $api_key = $content['mailchimp_api_key'];
-            $list_id = $content['mailchimp_list_id'];
+            $apiKey = $content['mailchimp_api_key'];
+            $listId = $content['mailchimp_list_id'];
 
-            $member_id = md5( strtolower( $email ) );
-            $data_center = substr( $api_key, strpos( $api_key, '-' ) +1 );
-            $url = 'https://' . $data_center . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/' . $member_id;
+            $memberId = md5( strtolower( $email ) );
+            $dataCenter = substr( $apiKey, strpos( $apiKey, '-' ) +1 );
+            $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listId . '/members/' . $memberId;
 
             $json = json_encode([
                 'email_address' => $email,
                 'status'        => 'subscribed', // "subscribed","unsubscribed","cleaned","pending"
                 'merge_fields'  => [
-                    'FNAME'     => $first_name,
-                    'LNAME'     => $last_name,
+                    'FNAME'     => $fname,
+                    'LNAME'     => $lname,
                 ]
             ]);
 
             $ch = curl_init( $url );
 
-            curl_setopt( $ch, CURLOPT_USERPWD, 'user:' . $api_key );
+            curl_setopt( $ch, CURLOPT_USERPWD, 'user:' . $apiKey );
             curl_setopt( $ch, CURLOPT_HTTPHEADER, [ 'Content-Type: application/json' ] );
             curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
             curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
@@ -100,8 +221,9 @@ if ( ! class_exists( 'L1a_Porch_Lead_Form' ) ) {
             curl_setopt( $ch, CURLOPT_POSTFIELDS, $json );
             $result = curl_exec( $ch );
 
+            dt_write_log( $result );
 
-            $http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+            $httpCode = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
             curl_close( $ch );
 
             return $result;
@@ -121,8 +243,8 @@ if ( ! class_exists( 'L1a_Porch_Lead_Form' ) ) {
                 return new WP_Error( __METHOD__, 'Must have either phone number or email address to create record.', [ 'status' => 400 ] );
             }
 
-            if ( ! empty( $last_name ) ) {
-                $full_name = $name . ' ' . $last_name;
+            if ( ! empty( $lname ) ) {
+                $full_name = $name . ' ' . $lname;
             } else {
                 $full_name = $name;
             }
@@ -156,28 +278,35 @@ if ( ! class_exists( 'L1a_Porch_Lead_Form' ) ) {
                 ];
             }
 
-
-            $fields['notes'] = [];
-            // geolocate IP address
-            if ( DT_Ipstack_API::get_key() ) {
-                $result = DT_Ipstack_API::geocode_current_visitor();
-                // @todo geocode ip address
-                $fields['notes'][] = serialize( $result );
-            } else {
-
-                $fields['notes'][] = DT_Ipstack_API::get_real_ip_address();
+            $ip_address = '';
+            if ( class_exists( 'DT_Ipstack_API' ) && ! empty( DT_Ipstack_API::get_key() ) ) {
+                $ip_result = DT_Ipstack_API::geocode_current_visitor();
+                $ip_address = DT_Ipstack_API::get_real_ip_address();
+                if ( ! empty( $ip_result ) ) {
+                    $fields['location_grid_meta'] = [
+                        'values' => [
+                            [
+                                'lng' => DT_Ipstack_API::parse_raw_result( $ip_result, 'lng' ),
+                                'lat' => DT_Ipstack_API::parse_raw_result( $ip_result, 'lat' )
+                            ]
+                        ]
+                    ];
+                }
             }
 
+            // geolocate IP address
+            $fields['notes'] = [];
             $fields['notes'][] = $comment;
+            if ( $ip_address ) {
+                $fields['notes'][] = $ip_address;
+            }
 
             $contact = DT_Posts::create_post( 'contacts', $fields, true, false );
-            if ( ! is_wp_error( $contact ) ) {
-                $contact_id = $contact['ID'];
+            if ( is_wp_error( $contact ) ) {
+                return false;
             } else {
-                return new WP_Error( __METHOD__, 'Could not create DT record.', [ 'status' => 400, 'error_data' => $contact ] );
+                return true;
             }
-
-            return $data;
         }
     }
     L1a_Porch_Lead_Form::instance();

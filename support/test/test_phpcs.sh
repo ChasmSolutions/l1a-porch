@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")/../../"
 
 if [ "$(php -r 'echo version_compare( phpversion(), "7.0", ">=" ) ? 1 : 0;')" != 1 ] ; then
-    vendor/bin/phpcs city-church-tools-english.php
+    vendor/bin/phpcs l1a-porch.php
     exit
 fi
 

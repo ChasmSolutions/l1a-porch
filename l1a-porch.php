@@ -3,7 +3,7 @@
  * Plugin Name: LoveOneAnother - Porch
  * Plugin URI: https://github.com/ChrisChasm/l1a-porch
  * Description: This plugin adds a front porch to a Disciple Tools system.
- * Text Domain: city-church-tools-english
+ * Text Domain: l1a-porch
  * Domain Path: /languages
  * Version:  0.1
  * Author URI: https://github.com/DiscipleTools
@@ -133,7 +133,7 @@ class L1a_Porch {
      * @return void
      */
     public function i18n() {
-        $domain = 'city-church-tools-english';
+        $domain = 'l1a-porch';
         load_plugin_textdomain( $domain, false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). 'support/languages' );
     }
 
@@ -145,7 +145,7 @@ class L1a_Porch {
      * @return string
      */
     public function __toString() {
-        return 'city-church-tools-english';
+        return 'l1a-porch';
     }
 
     /**
@@ -202,18 +202,18 @@ if ( ! function_exists( 'l1a_porch_hook_admin_notice' ) ) {
             $message .= ' ' . sprintf( esc_html( 'Current Disciple Tools version: %1$s, required version: %2$s' ), esc_html( $current_version ), esc_html( $l1a_porch_required_dt_theme_version ) );
         }
         // Check if it's been dismissed...
-        if ( ! get_option( 'dismissed-city-church-tools-english', false ) ) { ?>
-            <div class="notice notice-error notice-city-church-tools-english is-dismissible" data-notice="city-church-tools-english">
+        if ( ! get_option( 'dismissed-l1a-porch', false ) ) { ?>
+            <div class="notice notice-error notice-l1a-porch is-dismissible" data-notice="l1a-porch">
                 <p><?php echo esc_html( $message );?></p>
             </div>
             <script>
                 jQuery(function($) {
-                    $( document ).on( 'click', '.notice-city-church-tools-english .notice-dismiss', function () {
+                    $( document ).on( 'click', '.notice-l1a-porch .notice-dismiss', function () {
                         $.ajax( ajaxurl, {
                             type: 'POST',
                             data: {
                                 action: 'dismissed_notice_handler',
-                                type: 'city-church-tools-english',
+                                type: 'l1a-porch',
                                 security: '<?php echo esc_html( wp_create_nonce( 'wp_rest_dismiss' ) ) ?>'
                             }
                         })
@@ -272,7 +272,7 @@ if ( ! function_exists( "dt_hook_ajax_notice_handler" )){
 //            Puc_v4_Factory::buildUpdateChecker(
 //                'https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/version-control.json',
 //                __FILE__,
-//                'city-church-tools-english'
+//                'l1a-porch'
 //            );
 //
 //        }

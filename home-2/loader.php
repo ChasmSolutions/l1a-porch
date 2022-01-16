@@ -1,9 +1,6 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-/**
- * @todo Configure the title value, root value, type value, and token value. Don't change PORCH_ variable.
- */
 if ( ! defined( 'PORCH_TITLE' ) ) {
     define( 'PORCH_TITLE', 'L1A - Tampa' ); // Used in tabs and titles, avoid special characters. Spaces are okay.
 }

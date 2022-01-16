@@ -32,7 +32,11 @@ $content = [
     ],
     'testimonies' => [
 
-    ]
+    ],
+    'facebook_url' => '',
+    'twitter_url' => '',
+    'instagram_url' => '',
+
 ];
 ?>
 
@@ -340,7 +344,8 @@ $content = [
 <!-- END section -->
 
 
-<!-- contact -->
+<!-- contact
+================================================== -->
 <section class="pb_section" data-section="contact" id="section-contact">
     <div class="container">
 
@@ -351,55 +356,324 @@ $content = [
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-8 pr-md-5 pr-sm-0 mb-4">
-                <form action="#">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control p-3 rounded-0" id="name">
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control p-3 rounded-0" id="email">
-                            </div>
-                        </div>
-                    </div>
+        <?php if ( ! ( empty( $content['facebook_url'] ) && empty($content['twitter_url'] ) && empty($content['instagram_url'] ) ) ) : ?>
+        <div class="row justify-content-md-center text-center mb-5">
+            <h1 class="">Follow us on social media</h1>
+        </div>
+        <div class="row justify-content-md-center text-center mb-5">
+            <p>
+                <?php if ( ! empty( $content['facebook_url'] ?? '' ) ) : ?>
+                    <button type="button" onclick="location.href = '<?php echo esc_html( $content['facebook_url'] ?? '' ) ?>'"><i class="fab fa-facebook"></i> Facebook</button>
+                <?php endif; ?>
+                <?php if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
+                    <button type="button" onclick="location.href = '<?php echo esc_html( $content['twitter_url'] ?? '' ) ?>'"><i class="fab fa-twitter"></i> Twitter</button>
+                <?php endif; ?>
+                <?php if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
+                    <button type="button" onclick="location.href = '<?php echo esc_html( $content['instagram_url'] ?? '' ) ?>'"><i class="fab fa-instagram"></i> Instagram</button>
+                <?php endif; ?>
 
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea cols="30" rows="10" class="form-control p-3 rounded-0" id="message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn pb_outline-dark pb_font-13 pb_letter-spacing-2 p-3 rounded-0" value="Send Message">
-                    </div>
-                </form>
+            </p>
+        </div>
+        <div class="row justify-content-md-center text-center mb-12">
+            <h1 class="">Contact Us</h1>
+        </div>
+        <?php endif; ?>
+
+        <div class="row justify-content-md-center text-center">
+            <div id="section-name" class="w-100">
+                <label for="name" class="input-label label-name">Name *
+                    <input type="text" id="contact-name" name="name" class="input-text input-name" value="" required="required" ></label>
+                <span id="contact-name-error" class="form-error">You're name is required.</span>
             </div>
-            <div class="col-md-4">
-                <ul class="pb_contact_details_v1">
-                    <li>
-                        <span class="text-uppercase">Phone</span>
-                        +30 976 1382 9921
-                    </li>
-                    <li>
-                        <span class="text-uppercase">WhatsApp</span>
-                        +30 976 1382 9922
-                    </li>
-                    <li>
-                        <span class="text-uppercase">Facebook Username</span>
-                        pray4movement
-                    </li>
-                </ul>
+
+            <div id="section-email" class="w-100">
+                <label for="email" class="input-label label-email">Email *
+                    <input type="email" id="contact-email" name="email" class="input-text input-email" value="" >
+                    <input type="email" id="contact-e2" name="email2" class="input-text email" value="" required="required" >
+                </label>
+                <span id="contact-email-error" class="form-error">You're email is required.</span>
+            </div>
+
+            <div id="section-phone" class="w-100">
+                <label for="phone" class="input-label">Phone *
+                    <input type="tel" id="contact-phone" name="phone" class="input-text input-phone" value="" required="required" ></label>
+                <span id="contact-phone-error" class="form-error">You're phone is required.</span>
+            </div>
+
+            <div id="section-comment" class="w-100">
+                <label for="comment" class="input-label">Comment<br>
+                    <textarea id="contact-comment" name="comment" class="input-text" value=""></textarea>
+                </label>
+            </div>
+
+            <div id="submit-button-container" class="w-100">
+                <span style="color:red" class="form-submit-error"></span>
+                <button type="button" class="submit-button ignore" id="submit-button-contact" disabled>Submit</button> <span class="loading-spinner"></span>
             </div>
         </div>
 
     </div>
 </section>
-<!-- END section -->
+<script>
+    jQuery(document).ready(function(){
+        // This is a form delay to discourage robots
+        let counter = 8;
+        let myInterval = setInterval(function () {
+            let button = jQuery('#submit-button-contact')
 
+            button.html( 'Available in ' + counter)
+            --counter;
+
+            if ( counter === 0 ) {
+                clearInterval(myInterval);
+                button.html( 'Submit' ).prop('disabled', false)
+            }
+
+        }, 1000);
+
+
+        /* NEWSLETTER */
+        let submit_button_newsletter = jQuery('#submit-button-newsletter')
+        submit_button_newsletter.on('click', function(){
+            let spinner = jQuery('.loading-spinner')
+            spinner.addClass('active')
+            submit_button_newsletter.prop('disabled', true)
+
+            let honey = jQuery('#email').val()
+            if ( honey ) {
+                submit_button_newsletter.html('Shame, shame, shame. We know your name ... ROBOT!').prop('disabled', true )
+                spinner.removeClass('active')
+                return;
+            }
+
+            let fname_input = jQuery('#newsletter-fname')
+            let fname = fname_input.val()
+            if ( ! fname ) {
+                jQuery('#name-error').show()
+                submit_button_newsletter.removeClass('loading')
+                fname_input.focus(function(){
+                    jQuery('#name-error').hide()
+                })
+                submit_button_newsletter.prop('disabled', false)
+                spinner.removeClass('active')
+                return;
+            }
+
+            let lname_input = jQuery('#newsletter-lname')
+            let lname = fname_input.val()
+            if ( ! fname ) {
+                jQuery('#name-error').show()
+                submit_button_newsletter.removeClass('loading')
+                lname_input.focus(function(){
+                    jQuery('#name-error').hide()
+                })
+                submit_button_newsletter.prop('disabled', false)
+                spinner.removeClass('active')
+                return;
+            }
+
+            let email_input = jQuery('#newsletter-e2')
+            let email = email_input.val()
+            if ( ! email ) {
+                jQuery('#email-error').show()
+                submit_button_newsletter.removeClass('loading')
+                email_input.focus(function(){
+                    jQuery('#email-error').hide()
+                })
+                submit_button_newsletter.prop('disabled', false)
+                spinner.removeClass('active')
+                return;
+            }
+
+            let form_data = {
+                fname: fname,
+                lname: lname,
+                email: email
+            }
+
+            jQuery.ajax({
+                type: "POST",
+                data: JSON.stringify({ action: 'newsletter', parts: jsObject.parts, data: form_data }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
+                }
+            })
+                .done(function(response){
+                    jQuery('.loading-spinner').removeClass('active')
+                    console.log(response)
+
+                })
+                .fail(function(e) {
+                    console.log(e)
+                    jQuery('#error').html(e)
+                })
+        })
+
+        /* CONTACT FORM */
+        let submit_button_contact = jQuery('#submit-button-contact')
+        submit_button_contact.on('click', function(){
+            let spinner = jQuery('.loading-spinner')
+            spinner.addClass('active')
+            submit_button_contact.prop('disabled', true)
+
+            let honey = jQuery('#contact-email').val()
+            if ( honey ) {
+                submit_button_contact.html('Shame, shame, shame. We know your name ... ROBOT!').prop('disabled', true )
+                spinner.removeClass('active')
+                return;
+            }
+
+            let name_input = jQuery('#contact-name')
+            let name = name_input.val()
+            if ( ! name ) {
+                jQuery('#name-error').show()
+                submit_button_contact.removeClass('loading')
+                name_input.focus(function(){
+                    jQuery('#name-error').hide()
+                })
+                submit_button_contact.prop('disabled', false)
+                spinner.removeClass('active')
+                return;
+            }
+
+            let email_input = jQuery('#contact-e2')
+            let email = email_input.val()
+            if ( ! email ) {
+                jQuery('#email-error').show()
+                submit_button_contact.removeClass('loading')
+                email_input.focus(function(){
+                    jQuery('#email-error').hide()
+                })
+                submit_button_contact.prop('disabled', false)
+                spinner.removeClass('active')
+                return;
+            }
+
+            let phone_input = jQuery('#contact-phone')
+            let phone = phone_input.val()
+            if ( ! phone ) {
+                jQuery('#phone-error').show()
+                submit_button_contact.removeClass('loading')
+                email_input.focus(function(){
+                    jQuery('#phone-error').hide()
+                })
+                submit_button_contact.prop('disabled', false)
+                spinner.removeClass('active')
+                return;
+            }
+
+            let comment = jQuery('#contact-comment').val()
+
+            let form_data = {
+                name: name,
+                email: email,
+                phone: phone,
+                comment: comment
+            }
+
+            jQuery.ajax({
+                type: "POST",
+                data: JSON.stringify({ action: 'followup', parts: jsObject.parts, data: form_data }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
+                }
+            })
+                .done(function(response){
+                    jQuery('.loading-spinner').removeClass('active')
+                    console.log(response)
+                    jQuery('#contact-form').html('<span class="input-label">Sent. Thank You!</span>')
+                })
+                .fail(function(e) {
+                    console.log(e)
+                    jQuery('#error').html(e)
+                })
+        })
+
+    })
+</script>
+<style>
+    #contact-email {display:none;}
+    .form-error {
+        display:none;
+    }
+    input.input-text {
+        display: block;
+        padding: .5rem;
+        background-color: white;
+        border: 1px solid black;
+        outline: none;
+        color: #151515;
+        font-family: metropolis-semibold, sans-serif;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        width: 700px !important;
+        max-width: 100%;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    textarea.input-text {
+        display: block;
+        padding: .5rem;
+        background-color: white;
+        border: 1px solid black;
+        outline: none;
+        color: #151515;
+        font-family: metropolis-semibold, sans-serif;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        width: 700px !important;
+        max-width: 100%;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    @media only screen and (max-width: 700px) {
+        input.input-text {
+            width: 100% !important;
+            max-width: 100%;
+        }
+        textarea.input-text {
+            width: 100% !important;
+            max-width: 100%;
+        }
+    }
+
+    .submit-button {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+    .form-error {
+        color: red;
+    }
+
+    /* begin spinner */
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .loading-spinner.active {
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        border: 0.25rem solid #919191;
+        border-top-color: black;
+        animation: spin 1s infinite linear;
+        display: inline-block;
+    }
+    /* end spinner */
+
+</style>
 
 
 <footer class="pb_footer bg-light" role="contentinfo">

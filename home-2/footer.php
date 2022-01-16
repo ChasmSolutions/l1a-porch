@@ -1,4 +1,4 @@
-<script src="<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/js/jquery.min.js"></script>
+
 
 <script src="<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/js/popper.min.js"></script>
 <script src="<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/js/bootstrap.min.js"></script>
@@ -18,7 +18,7 @@
             'type' => $this->type,
         ],
         'trans' => [
-            'add' => __( 'Add Magic', 'city-church-tools-english' ),
+            'add' => __( 'Add Magic', 'l1a-porch' ),
         ],
     ]) ?>][0]
 
