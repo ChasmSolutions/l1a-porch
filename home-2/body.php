@@ -136,7 +136,7 @@ $content = [
     <div class="container">
         <div class="row justify-content-md-center text-center mb-5">
             <div class="col-lg-9">
-                <h1 class="mt-0 heading-border-top font-weight-normal">Following Jesus is simple. Joining his movement should be too.</h1>
+                <h1 class="mt-0 heading-border-top font-weight-normal">Following Jesus is simple. <br>Joining his movement should be too.</h1>
                 <p>Millions around the world are rediscovering the path of discipleship and church that Jesus modeled.</p>
             </div>
         </div>
@@ -145,9 +145,9 @@ $content = [
                 <div class="single-item pb_slide_v2">
                     <div>
                         <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/images/1900x1200_img_4.jpg);"></div>
+                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-la.png);"></div>
                             <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="flaticon text-primary flaticon-handcuffs"></i></div>
+                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
                                 <h3 class="font-weight-normal mt-0 mb-4">B in Southern California</h3>
                                 <p>PRAISE JESUS for new life in Christ & another baptism! Our Orange County teammate Tim H offered prayer to “B” (Iranian 🇮🇷) in his home. After B received prayer, Tim H shared the gospel & B repented of his sin and believed in Jesus for forgiveness.</p>
                                 <p>On Friday night, Tim baptized B in front of their "Here To There Church" family at Corona Del Mar Beach. B is being discipled in the Word as he grows in Christ & is part of this thriving community of believers in Irvine, CA.</p>
@@ -157,9 +157,9 @@ $content = [
 
                     <div>
                         <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/images/1900x1200_img_2.jpg);"></div>
+                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-mich.png);"></div>
                             <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="flaticon text-primary flaticon-wallet"></i></div>
+                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
                                 <h3 class="font-weight-normal mt-0 mb-4">Kevin in Northern Michigan</h3>
                                 <p>I thank God that His timing is so perfect and that He equipped me through His Holy Spirit.</p>
                                 <p>I also thank Him for the men who shared the tools with me that they learned from Big Life. It has given me priceless information about how to talk to people and share the good news with them.</p>
@@ -170,9 +170,9 @@ $content = [
 
                     <div>
                         <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/images/1900x1200_img_3.jpg);"></div>
+                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-tampa.png);"></div>
                             <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="flaticon text-primary flaticon-computer-security"></i></div>
+                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
                                 <h3 class="font-weight-normal mt-0 mb-4">Amanda in Tampa</h3>
                                 <p>Ms C has been attending our zoom "Unstuck Tuesday Home-church" for about 6 months now. We read the great commission as our vision weekly together. Ms C invited Miss M, her Jewish new believer friend to join. Ms M was touched by the Spirit to be baptized. After a few months Ms C & I baptized her with her family in attendance at the local beach in Tampa!!</p>
                             </div>
@@ -181,24 +181,11 @@ $content = [
 
                     <div>
                         <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/images/1900x1200_img_4.jpg);"></div>
+                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-socal.png);"></div>
                             <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="flaticon text-primary flaticon-courthouse"></i></div>
+                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
                                 <h3 class="font-weight-normal mt-0 mb-4">Shane in Southern California</h3>
                                 <p>PRAISE JESUS! 60+ repented & were baptized in Huntington Beach last night!! One of the new leaders we’re discipling in Newport baptized 9 people!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/images/1900x1200_img_4.jpg);"></div>
-                            <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="flaticon text-primary flaticon-jury"></i></div>
-                                <h3 class="font-weight-normal mt-0 mb-4">Fact 5</h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                                <p>Now there was a Pharisee, a man named Nicodemus who was a member of the Jewish ruling council. He came to Jesus at night and said, "Rabbi, we know that you are a teacher who has come from God. For no one could perform the signs you are doing if God were not with him."</p>
-                                <p>Very truly I tell you, no one can enter the kingdom of God unless they are born of water and the Spirit. Flesh gives birth to flesh, but the Spirit3:6 Or but spirit gives birth to spirit.</p>
                             </div>
                         </div>
                     </div>
@@ -239,7 +226,7 @@ $content = [
             <div class="col-lg">
 
                 <div class="media pb_media_v1 mb-5">
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-jury"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-person" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">Who are you?</h3>
                         <p class="pb_font-14">We are groups of individuals and disciple-making practitioners all over the world who love Jesus, seek to follow his commands and live out the Great Commission as disciples and simple churches. (Matthew 28.19-20).</p>
@@ -249,7 +236,7 @@ $content = [
             </div>
             <div class="col-lg">
                 <div class="media pb_media_v1 mb-5">
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-law"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-ios-lightbulb" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">Who's the leader?</h3>
                         <p class="pb_font-14">Jesus. He has been given all authority (Matthew 28:18-20) and is the head of the Church (Colossians 1:18)</p>
@@ -260,7 +247,7 @@ $content = [
             <div class="col-lg">
                 <div class="media pb_media_v1 mb-5">
 
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-law"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-heart" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">Why focus on "love one another"?</h3>
                         <p class="pb_font-14">This was Jesus’ new command that he expected all of his followers to obey (John 15:9-17). As Christians, it should be the single greatest character quality that we demonstrate to our world.</p>
@@ -271,7 +258,7 @@ $content = [
             <div class="col-lg">
 
                 <div class="media pb_media_v1 mb-5">
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-jury"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-android-home" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">Is Love One Another a church?</h3>
                         <p class="pb_font-14">Yes and No: We’re not “a” specific church, but we’re “the” universal church. That is, we are all followers of Jesus who seek to connect, communicate and collaborate as we all follow his commands and live the way he lived. We all share the common bond of faith in him. We are also a network of decentralized, organic churches that meet in homes, businesses and other places, and then those simple churches are connected at the city level. Our focus is multiplying disciples who come together as the church in their community.</p>
@@ -281,7 +268,7 @@ $content = [
             </div>
             <div class="col-lg">
                 <div class="media pb_media_v1 mb-5">
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-courthouse"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-ios-flame" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">Who's sponsoring this?</h3>
                         <p class="pb_font-14">There is no single organization or denomination overseeing this effort. We are all from varied Christian backgrounds and perspectives, operating in unity with Jesus as our king. We do have the common thread of desiring to see God’s Kingdom transform our communities through the multiplication of disciples and simple churches.</p>
@@ -290,7 +277,7 @@ $content = [
             </div>
             <div class="col-lg">
                 <div class="media pb_media_v1 mb-5">
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-courthouse"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-map" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">Where are you located?</h3>
                         <p class="pb_font-14">Nowhere, and everywhere. We’re spread all over the globe, though this site is focusing on disciple-makers in North America. We’re in many major cities across the US and Canada. You can contact us if you would like to get connected to any practitioners of disciple-making and church planting movements near you.</p>
@@ -301,7 +288,7 @@ $content = [
             <div class="col-lg">
 
                 <div class="media pb_media_v1 mb-5">
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-jury"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-android-people" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">What do you mean by "disciple-making"?</h3>
                         <p class="pb_font-14">Disciple-making is the intentional effort to equip someone to follow Jesus and obey his commands and actively disciple another person. We like to say that a disciple is a person who hears God’s voice, obeys his commands, and shares them with others.</p>
@@ -311,7 +298,7 @@ $content = [
             </div>
             <div class="col-lg">
                 <div class="media pb_media_v1 mb-5">
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-courthouse"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-ios-infinite" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">What do you mean by "movement"?</h3>
                         <p class="pb_font-14">A movement is network of disciples and disciple-making simple churches that demonstrate generational growth rapidly and consistently. In terms of size/description, a typical movement encompasses 1,000+ disciples and/or 100+ churches.</p>
@@ -321,7 +308,7 @@ $content = [
             <div class="col-lg">
                 <div class="media pb_media_v1 mb-5">
 
-                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="flaticon flaticon-law"></i></div>
+                    <div class="icon border border-gray rounded-circle d-flex mr-3 display-4 text-primary"><i class="ion-ios-star" style="font-size:64px;"></i></div>
                     <div class="media-body">
                         <h3 class="mt-0 pb_font-17">Is this legit (or a cult)?</h3>
                         <p class="pb_font-14">We understand your concerns, but it’s really quite simple: We believe in Jesus and all that the Bible says he is. Since we’re not a corporate organization, there’s no building or centralized governing body to point you toward. Generally, we would all hold to the Lausanne Covenant in terms of our faith perspective.</p>
