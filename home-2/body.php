@@ -50,11 +50,9 @@ $content = [
         <div class="collapse navbar-collapse" id="probootstrap-navbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#section-why-us">Vision</a></li>
-<!--                <li class="nav-item"><a class="nav-link" href="#section-areas">Areas</a></li>-->
+                <li class="nav-item"><a class="nav-link" href="#section-about">Vision</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-testimonials">Testimonials</a></li>
-                <li class="nav-item"><a class="nav-link" href="#section-about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#section-team">FAQ's</a></li>
+                <li class="nav-item"><a class="nav-link" href="#section-faqs">FAQ's</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-contact">Get Started</a></li>
             </ul>
         </div>
@@ -136,7 +134,7 @@ $content = [
 
 
 <!-- Testimonies -->
-<section class="pb_section pb_bg-half" data-section="areas" id="testimonies">
+<section class="pb_section pb_bg-half" data-section="testimonials" id="section-testimonials">
     <div class="container">
         <div class="row justify-content-md-center text-center mb-5">
             <div class="col-lg-9">
@@ -219,7 +217,7 @@ $content = [
 
 
 <!-- FAQ's -->
-<section class="pb_section bg-light">
+<section class="pb_section bg-light" data-section="faqs" id="section-faqs">
     <div class="container">
         <div class="row justify-content-md-center text-center mb-5">
             <div class="col-lg-9">
