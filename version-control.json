@@ -1,12 +1,12 @@
 {
 
-  "name": "Love One Another - Porch",
+  "name": "LoveOneAnother - Porch",
   "version": "0.1",
   "last_updated": "2021-03",
   "author": "Disciple Tools",
   "author_homepage": "https://disciple.tools",
-  "git_owner": "DiscipleTools",
-  "git_repo": "city-church-tools-english",
+  "git_owner": "ChrisChasm",
+  "git_repo": "l1a-porch",
   "download_url": "https://github.com/ChrisChasm/l1a-porch/releases/latest/download/city-church-tools-english.zip",
   "homepage": "https://github.com/ChrisChasm/l1a-porch",
   "issues_url": "https://github.com/ChrisChasm/l1a-porch/issues",
@@ -23,7 +23,7 @@
     "high": "https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/documentation/banner.png"
   },
   "sections": {
-    "description": "Kick start your Disciple.Tools plugin project with this template! This plugin is a collection of our best practices and code bases for creating Disciple.Tools plugins.",
+    "description": "Quick launch site page for city churches.",
     "installation": "(Required) You must have Disciple.Tools Theme installed before using this plugin. Once Disciple.Tools is installed, you can use the normal Plugin system to install the plugin.",
     "changelog": ""
   }

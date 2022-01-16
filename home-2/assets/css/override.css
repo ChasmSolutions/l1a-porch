@@ -1,0 +1,10 @@
+.pb_outline-light {
+    background: #fff !important;
+    border: 1px solid white !important;
+    color: #000 !important;
+}
+.pb_outline-dark {
+    background: #000 !important;
+    border: 1px solid black !important;
+    color: #fff !important;
+}

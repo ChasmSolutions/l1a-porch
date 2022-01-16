@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: CityChurch Tools (English)
+ * Plugin Name: LoveOneAnother - Porch
  * Plugin URI: https://github.com/ChrisChasm/l1a-porch
  * Description: This plugin adds a front porch to a Disciple Tools system.
  * Text Domain: city-church-tools-english
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return object|bool
  */
 function l1a_porch() {
-    $l1a_porch_required_dt_theme_version = '1.8.1';
+    $l1a_porch_required_dt_theme_version = '1.19';
     $wp_theme = wp_get_theme();
     $version = $wp_theme->version;
 

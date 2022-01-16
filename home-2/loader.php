@@ -5,7 +5,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
  * @todo Configure the title value, root value, type value, and token value. Don't change PORCH_ variable.
  */
 if ( ! defined( 'PORCH_TITLE' ) ) {
-    define( 'PORCH_TITLE', 'Home 2' ); // Used in tabs and titles, avoid special characters. Spaces are okay.
+    define( 'PORCH_TITLE', 'L1A - Tampa' ); // Used in tabs and titles, avoid special characters. Spaces are okay.
 }
 if ( ! defined( 'PORCH_ROOT' ) ) {
     define( 'PORCH_ROOT', 'porch_app' ); // Alphanumeric key. Use underscores not hyphens. No special characters.
