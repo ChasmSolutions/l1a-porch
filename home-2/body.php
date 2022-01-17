@@ -1,49 +1,12 @@
 <?php
-$content = [
-    'images' => [
-        'hero_background' => [
-            'img' =>  trailingslashit( plugin_dir_url(__FILE__) ) . 'assets/temp_images/hero.jpg',
-            'context' => 'This is the background of the hero first screen.',
-        ],
-        'slider' => [
-            [
-                'img' => trailingslashit( plugin_dir_url(__FILE__) ) . 'assets/temp_images/1a.jpg',
-                'text' => 'Reason 1'
-            ],
-            [
-                'img' => trailingslashit( plugin_dir_url(__FILE__) ) . 'assets/temp_images/2a.jpg',
-                'text' => 'Reason 2'
-            ],
-            [
-                'img' => trailingslashit( plugin_dir_url(__FILE__) ) . 'assets/temp_images/3a.jpg',
-                'text' => 'Reason 3'
-            ],
-            [
-                'img' => trailingslashit( plugin_dir_url(__FILE__) ) . 'assets/temp_images/4a.jpg',
-                'text' => 'Reason 4'
-            ]
-        ]
-    ],
-    'nav' => [
-        'title' => 'Love One Another - Tampa'
-    ],
-    'hero' => [
+$content = l1a_porch_fields();
 
-    ],
-    'testimonies' => [
-
-    ],
-    'facebook_url' => '',
-    'twitter_url' => '',
-    'instagram_url' => '',
-
-];
 ?>
 
 <!-- nav -->
 <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
     <div class="container">
-        <a class="navbar-brand" href="/"><?php echo esc_html( $content['nav']['title'] ) // title ?></a>
+        <a class="navbar-brand" href="/"><?php echo esc_html( $content['site_title']['value'] ) // title ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span><i class="ion-navicon"></i></span>
         </button>
@@ -61,7 +24,7 @@ $content = [
 <!-- END nav -->
 
 <!-- hero -->
-<section class="pb_cover_v1 text-left cover-bg-black cover-bg-opacity-4" style="background-image: url( <?php echo esc_html( $content['images']['hero_background']['img'] ) ?> )" id="section-home">
+<section class="pb_cover_v1 text-left cover-bg-black cover-bg-opacity-4" style="background-image: url( <?php echo esc_url( $content['hero_background']['value'] ) ?> )" id="section-home">
     <div class="container">
         <div class="row align-items-center justify-content-end">
             <div class="col-md-8  order-md-1">
@@ -327,16 +290,15 @@ $content = [
 <!-- slider -->
 <section>
     <div class="multiple-items pb_slide_v1">
-        <?php foreach( $content['images']['slider'] as $item ) : ?>
+        <?php foreach( $content as $sk => $sv ) {
+            if ( 'slider' === substr($sk, 0, 6 ) ) {
+            ?>
             <div class="link-block">
                 <a href="javascript:void(0)" class="link-block">
-                    <img src="<?php echo esc_url( $item['img'] ) ?>" alt="" class="img-fluid">
-                    <div class="slide-text">
-                        <p><?php echo esc_html( $item['text'] ) ?></p>
-                    </div>
+                    <img src="<?php echo esc_url( $sv['value'] ) ?>" alt="" class="img-fluid">
                 </a>
             </div>
-        <?php endforeach; ?>
+        <?php } } ?>
     </div>
 </section>
 <!-- END section -->

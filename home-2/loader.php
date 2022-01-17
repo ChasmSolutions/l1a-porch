@@ -2,7 +2,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 if ( ! defined( 'PORCH_TITLE' ) ) {
-    define( 'PORCH_TITLE', 'L1A - Tampa' ); // Used in tabs and titles, avoid special characters. Spaces are okay.
+    define( 'PORCH_TITLE', 'Love One Another' ); // Used in tabs and titles, avoid special characters. Spaces are okay.
 }
 if ( ! defined( 'PORCH_ROOT' ) ) {
     define( 'PORCH_ROOT', 'porch_app' ); // Alphanumeric key. Use underscores not hyphens. No special characters.
@@ -36,6 +36,8 @@ class L1a_Porch_Home_2 extends DT_Magic_Url_Base
 
         $url = dt_get_url_path();
         if ( empty( $url ) && ! dt_is_rest() ) {
+            $content = l1a_porch_fields();
+            $this->page_title = $content['site_title']['value'] ?? '';
 
             // register url and access
             add_action( "template_redirect", [ $this, 'theme_redirect' ] );
@@ -68,11 +70,17 @@ class L1a_Porch_Home_2 extends DT_Magic_Url_Base
     }
 
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
-        return [];
+        $allowed_js = [];
+//        $allowed_js[] = 'jquery-cookie';
+//        $allowed_js[] = 'mapbox-gl';
+//        $allowed_js[] = 'mapbox-cookie';
+        return $allowed_js;
     }
 
     public function dt_magic_url_base_allowed_css( $allowed_css ) {
-        return [];
+        $allowed_css = [];
+//        $allowed_css[] = 'mapbox-gl-css';
+        return $allowed_css;
     }
 
     public function header_javascript(){
@@ -80,6 +88,7 @@ class L1a_Porch_Home_2 extends DT_Magic_Url_Base
     }
 
     public function body(){
+
         require_once( 'body.php' );
     }
 

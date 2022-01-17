@@ -23,7 +23,7 @@ jobs:
       - name: Build project
         run: |
           mkdir l1a-porch
-          cp -r l1a-porch.php home-2 support spinner.svg version-control.json LICENSE SECURITY.md l1a-porch/
+          cp -r l1a-porch.php admin home-2 support spinner.svg version-control.json LICENSE SECURITY.md l1a-porch/
           zip -r l1a-porch.zip l1a-porch
       - name: Create Release
         id: create_release

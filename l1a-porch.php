@@ -79,8 +79,7 @@ class L1a_Porch {
         require_once( 'home-2/loader.php' ); /* Simple, Big images, White and Image */
 
         if ( is_admin() ) {
-//            require_once( 'support/required-plugins/class-tgm-plugin-activation.php' );
-//            require_once( 'support/required-plugins/config-required-plugins.php' );
+            require_once( 'admin/admin-menu-and-tabs.php' );
         }
 
         if ( is_admin() ){
@@ -237,47 +236,171 @@ if ( ! function_exists( "dt_hook_ajax_notice_handler" )){
     }
 }
 
-/**
- * Plugin Releases and updates
- * @todo Uncomment and change the url if you want to support remote plugin updating with new versions of your plugin
- * To remove: delete the section of code below and delete the file called version-control.json in the plugin root
- *
- * This section runs the remote plugin updating service, so you can issue distributed updates to your plugin
- *
- * @note See the instructions for version updating to understand the steps involved.
- * @link https://github.com/ChrisChasm/l1a-porch/wiki/Configuring-Remote-Updating-System
- *
- * @todo Enable this section with your own hosted file
- * @todo An example of this file can be found in (version-control.json)
- * @todo Github is a good option for delivering static json.
- */
-/**
- * Check for plugin updates even when the active theme is not Disciple.Tools
- *
- * Below is the publicly hosted .json file that carries the version information. This file can be hosted
- * anywhere as long as it is publicly accessible. You can download the version file listed below and use it as
- * a template.
- * Also, see the instructions for version updating to understand the steps involved.
- * @see https://github.com/DiscipleTools/disciple-tools-version-control/wiki/How-to-Update-the-Starter-Plugin
- */
-//add_action( 'plugins_loaded', function (){
-//    if ( is_admin() ){
-//        // Check for plugin updates
-//        if ( ! class_exists( 'Puc_v4_Factory' ) ) {
-//            if ( file_exists( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' )){
-//                require( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' );
-//            }
-//        }
-//        if ( class_exists( 'Puc_v4_Factory' ) ){
-//            Puc_v4_Factory::buildUpdateChecker(
-//                'https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/version-control.json',
-//                __FILE__,
-//                'l1a-porch'
-//            );
-//
-//        }
-//    }
-//} );
+if ( ! function_exists( 'l1a_porch_fields' ) ) {
+    function l1a_porch_fields() {
+        /**
+        'key' => [
+            'label' => 'Label',
+            'value' => '', // empty. This is where current value us stored.
+            'type' => 'text', // text, textarea, url, select
+        ],
+        'select' => [
+            'label' => 'Select',
+            'value' => '',
+            'default' => [
+                'key1' => 'Label1',
+                'key2' => 'Label2',
+             ],
+            'type' => 'select',
+        ]
+         */
+        $defaults = [
+            [
+                'label' => 'General',
+                'type' => 'break',
+            ],
+            'city' => [
+                'label' => 'City',
+                'value' => '',
+                'type' => 'text',
+            ],
+            'site_title' => [
+                'label' => 'Site Title',
+                'value' => '',
+                'type' => 'text',
+            ],
+            'description' => [
+                'label' => 'Description',
+                'value' => '',
+                'type' => 'textarea',
+            ],
+            [
+                'label' => 'Nav Section',
+                'type' => 'break',
+            ],
+            'hero_background' => [
+                'label' => 'Hero Background',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/hero.jpg',
+                'type' => 'url',
+            ],
+            [
+                'label' => 'Why Section',
+                'type' => 'break',
+            ],
+            [
+                'label' => 'Testimonies Section',
+                'type' => 'break',
+            ],
+            'testimony_1_title' => [
+                'label' => 'Testimony #1 - Title',
+                'value' => '',
+                'type' => 'text',
+            ],
+            'testimony_1_story' => [
+                'label' => 'Testimony #1 - Story',
+                'value' => '',
+                'type' => 'textarea',
+            ],
+            'testimony_1_url' => [
+                'label' => 'Testimony #1 - Image URL',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/map-socal.png',
+                'type' => 'url',
+            ],
+            [
+                'label' => 'Get Started',
+                'type' => 'break',
+            ],
+            'slider_1' => [
+                'label' => 'Slider 1',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/1a.jpg',
+                'type' => 'url',
+            ],
+            'slider_2' => [
+                'label' => 'Slider 2',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/2a.jpg',
+                'type' => 'url',
+            ],
+            'slider_3' => [
+                'label' => 'Slider 3',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/3a.jpg',
+                'type' => 'url',
+            ],
+            'slider_4' => [
+                'label' => 'Slider 4',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/4a.jpg',
+                'type' => 'url',
+            ],
+            'slider_5' => [
+                'label' => 'Slider 5',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/3a.jpg',
+                'type' => 'url',
+            ],
+            'slider_6' => [
+                'label' => 'Slider 6',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/2a.jpg',
+                'type' => 'url',
+            ],
+            [
+                'label' => 'Footer Section',
+                'type' => 'break',
+            ],
+            'facebook_url' => [
+                'label' => 'Facebook URL',
+                'value' => '',
+                'type' => 'text',
+            ],
+            'twitter_url' => [
+                'label' => 'Twitter URL',
+                'value' => '',
+                'type' => 'text',
+            ],
+            'instagram_url' => [
+                'label' => 'Instagram URL',
+                'value' => '',
+                'type' => 'text',
+            ],
 
+        ];
 
+        $defaults = apply_filters( 'l1a_porch_fields', $defaults );
 
+        $saved_fields = get_option( 'l1a_porch_fields', [] );
+
+        return l1a_recursive_parse_args( $saved_fields, $defaults );
+    }
+}
+if ( ! function_exists( 'l1a_recursive_parse_args' ) ) {
+    function l1a_recursive_parse_args( $args, $defaults ) {
+        $new_args = (array) $defaults;
+
+        foreach ( $args ?: [] as $key => $value ) {
+            if ( is_array( $value ) && isset( $new_args[ $key ] ) ) {
+                $new_args[ $key ] = l1a_recursive_parse_args( $value, $new_args[ $key ] );
+            }
+            elseif ( $key !== "default" ){
+                $new_args[ $key ] = $value;
+            }
+        }
+
+        return $new_args;
+    }
+}
+
+add_action( 'plugins_loaded', function (){
+    if ( is_admin() ){
+        // Check for plugin updates
+        if ( ! class_exists( 'Puc_v4_Factory' ) ) {
+            if ( file_exists( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' )){
+                require( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' );
+            }
+        }
+        if ( class_exists( 'Puc_v4_Factory' ) ){
+            Puc_v4_Factory::buildUpdateChecker(
+                'https://raw.githubusercontent.com/ChrisChasm/l1a-porch/master/version-control.json',
+                __FILE__,
+                'l1a-porch'
+            );
+
+        }
+    }
+} );
