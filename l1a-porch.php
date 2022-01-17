@@ -5,7 +5,7 @@
  * Description: This plugin adds a front porch to a Disciple Tools system.
  * Text Domain: l1a-porch
  * Domain Path: /languages
- * Version:  0.1
+ * Version:  0.2
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/ChrisChasm/l1a-porch
  * Requires at least: 4.7.0
