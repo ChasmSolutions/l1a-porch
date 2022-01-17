@@ -30,7 +30,7 @@ $content = l1a_porch_fields();
             <div class="col-md-8  order-md-1">
 
                 <h2 class="heading">Do what Jesus did.</h2>
-                <h2 class="heading">Connect with others in Tampa doing the same.</h2>
+                <h2 class="heading">Connect with others in <?php echo esc_url( $content['city']['value'] ?? '' ) ?> doing the same.</h2>
                 <hr style="border:1px solid white;">
                 <div class="sub-heading">
                     <p class="mb-5">
