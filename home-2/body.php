@@ -60,7 +60,7 @@ $content = l1a_porch_fields();
             <div class="col-lg-5 pr-md-5 pr-sm-0">
                 <h2 class="mt-0 heading-border-top font-weight-normal">There's a reason...</h2>
                 <p class="font-weight-bold">We’re not called to a church experience on Sunday.</p>
-                <p class="font-weight-bold">We’re called to follow Jesus. To do what He did, think like He thought, and love like He loved.</p>
+                <p class="font-weight-bold">We’re called to follow Jesus. To do what He did, think like He thought, and love like He loved ... every day, every disciple.</p>
                 <p class="font-weight-bold">It’s time to return to God’s design for discipleship, Church and life. It’s time to do what Jesus did and LOVE ONE ANOTHER.</p>
             </div>
             <div class="col-lg-7">
@@ -108,53 +108,32 @@ $content = l1a_porch_fields();
         <div class="row">
             <div class="col-md-12">
                 <div class="single-item pb_slide_v2">
-                    <div>
-                        <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-la.png);"></div>
-                            <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
-                                <h3 class="font-weight-normal mt-0 mb-4">B in Southern California</h3>
-                                <p>PRAISE JESUS for new life in Christ & another baptism! Our Orange County teammate Tim H offered prayer to “B” (Iranian 🇮🇷) in his home. After B received prayer, Tim H shared the gospel & B repented of his sin and believed in Jesus for forgiveness.</p>
-                                <p>On Friday night, Tim baptized B in front of their "Here To There Church" family at Corona Del Mar Beach. B is being discipled in the Word as he grows in Christ & is part of this thriving community of believers in Irvine, CA.</p>
+                    <?php
+                    $testimonies = [];
+                    foreach( $content as $sk => $sv ) {
+                        if ( 'testimony' === substr($sk, 0, 9 ) ) {
+                            $exp = explode( '_', $sk );
+                            if ( ! isset( $testimonies[$exp[1]] ) ) {
+                                $testimonies[$exp[1]] = [];
+                            }
+                            $testimonies[$exp[1]][$exp[2]] = $sv['value'];
+                        }
+                    }
+                    foreach( $testimonies as $tk => $tv ) {
+                        ?>
+                        <div>
+                            <div class="d-lg-flex d-md-block slide_content">
+                                <div class="pb_content-media" style="background-image: url(<?php echo esc_url( $tv['url'] ?? '') ?>);"></div>
+                                <div class="slide_content-text text-center">
+                                    <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
+                                    <h3 class="font-weight-normal mt-0 mb-4"><?php echo esc_html( $tv['title'] ?? '') ?></h3>
+                                    <div style="text-align:left;"><?php echo nl2br( $tv['story'] ) ?></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div>
-                        <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-mich.png);"></div>
-                            <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
-                                <h3 class="font-weight-normal mt-0 mb-4">Kevin in Northern Michigan</h3>
-                                <p>I thank God that His timing is so perfect and that He equipped me through His Holy Spirit.</p>
-                                <p>I also thank Him for the men who shared the tools with me that they learned from Big Life. It has given me priceless information about how to talk to people and share the good news with them.</p>
-                                <p>So, thank you to all of you who have had a part in helping change my life, from prayers, to those men who contacted me in prison and sent learning materials.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-tampa.png);"></div>
-                            <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
-                                <h3 class="font-weight-normal mt-0 mb-4">Amanda in Tampa</h3>
-                                <p>Ms C has been attending our zoom "Unstuck Tuesday Home-church" for about 6 months now. We read the great commission as our vision weekly together. Ms C invited Miss M, her Jewish new believer friend to join. Ms M was touched by the Spirit to be baptized. After a few months Ms C & I baptized her with her family in attendance at the local beach in Tampa!!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="d-lg-flex d-md-block slide_content">
-                            <div class="pb_content-media" style="background-image: url(<?php echo esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) ) ?>assets/temp_images/map-socal.png);"></div>
-                            <div class="slide_content-text text-center">
-                                <div class="pb_icon_v1"><i class="text-primary ion-earth" style="font-size:96px;"></i></div>
-                                <h3 class="font-weight-normal mt-0 mb-4">Shane in Southern California</h3>
-                                <p>PRAISE JESUS! 60+ repented & were baptized in Huntington Beach last night!! One of the new leaders we’re discipling in Newport baptized 9 people!</p>
-                            </div>
-                        </div>
-                    </div>
-
+                        <?php
+                    }
+                    ?>
                 </div>
 
             </div>
@@ -316,20 +295,20 @@ $content = l1a_porch_fields();
             </div>
         </div>
 
-        <?php if ( ! ( empty( $content['facebook_url'] ) && empty($content['twitter_url'] ) && empty($content['instagram_url'] ) ) ) : ?>
+        <?php if ( ! ( empty( $content['facebook_url']['value'] ) && empty($content['twitter_url']['value'] ) && empty($content['instagram_url']['value'] ) ) ) : ?>
         <div class="row justify-content-md-center text-center mb-5">
             <h1 class="">Follow us on social media</h1>
         </div>
         <div class="row justify-content-md-center text-center mb-5">
             <p>
-                <?php if ( ! empty( $content['facebook_url'] ?? '' ) ) : ?>
-                    <button type="button" onclick="location.href = '<?php echo esc_html( $content['facebook_url'] ?? '' ) ?>'"><i class="fab fa-facebook"></i> Facebook</button>
+                <?php if ( ! empty( $content['facebook_url']['value'] ?? '' ) ) : ?>
+                    <a href="<?php echo $content['facebook_url']['value'] ?? '' ?>" class="social-button"><i class="fa fa-facebook"></i> Facebook</a>
                 <?php endif; ?>
-                <?php if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
-                    <button type="button" onclick="location.href = '<?php echo esc_html( $content['twitter_url'] ?? '' ) ?>'"><i class="fab fa-twitter"></i> Twitter</button>
+                <?php if ( ! empty( $content['twitter_url']['value'] ?? '' ) ) : ?>
+                    <a href="<?php echo $content['twitter_url']['value'] ?? '' ?>" class="social-button"><i class="fa fa-twitter"></i> Twitter</a>
                 <?php endif; ?>
-                <?php if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
-                    <button type="button" onclick="location.href = '<?php echo esc_html( $content['instagram_url'] ?? '' ) ?>'"><i class="fab fa-instagram"></i> Instagram</button>
+                <?php if ( ! empty( $content['instagram_url']['value'] ?? '' ) ) : ?>
+                    <a href="<?php echo $content['instagram_url']['value'] ?? '' ?>" class="social-button"><i class="fa fa-instagram"></i> Instagram</a>
                 <?php endif; ?>
 
             </p>
@@ -358,6 +337,12 @@ $content = l1a_porch_fields();
                 <label for="phone" class="input-label">Phone *
                     <input type="tel" id="contact-phone" name="phone" class="input-text input-phone" value="" required="required" ></label>
                 <span id="contact-phone-error" class="form-error">You're phone is required.</span>
+            </div>
+
+            <div id="section-location" class="w-100">
+                <label for="location" class="input-label">Neighborhood or Address *
+                    <input type="tel" id="contact-location" name="location" class="input-text input-location" value="" required="required" ></label>
+                <span id="contact-location-error" class="form-error">You're location is required.</span>
             </div>
 
             <div id="section-comment" class="w-100">
@@ -391,86 +376,6 @@ $content = l1a_porch_fields();
 
         }, 1000);
 
-
-        /* NEWSLETTER */
-        let submit_button_newsletter = jQuery('#submit-button-newsletter')
-        submit_button_newsletter.on('click', function(){
-            let spinner = jQuery('.loading-spinner')
-            spinner.addClass('active')
-            submit_button_newsletter.prop('disabled', true)
-
-            let honey = jQuery('#email').val()
-            if ( honey ) {
-                submit_button_newsletter.html('Shame, shame, shame. We know your name ... ROBOT!').prop('disabled', true )
-                spinner.removeClass('active')
-                return;
-            }
-
-            let fname_input = jQuery('#newsletter-fname')
-            let fname = fname_input.val()
-            if ( ! fname ) {
-                jQuery('#name-error').show()
-                submit_button_newsletter.removeClass('loading')
-                fname_input.focus(function(){
-                    jQuery('#name-error').hide()
-                })
-                submit_button_newsletter.prop('disabled', false)
-                spinner.removeClass('active')
-                return;
-            }
-
-            let lname_input = jQuery('#newsletter-lname')
-            let lname = fname_input.val()
-            if ( ! fname ) {
-                jQuery('#name-error').show()
-                submit_button_newsletter.removeClass('loading')
-                lname_input.focus(function(){
-                    jQuery('#name-error').hide()
-                })
-                submit_button_newsletter.prop('disabled', false)
-                spinner.removeClass('active')
-                return;
-            }
-
-            let email_input = jQuery('#newsletter-e2')
-            let email = email_input.val()
-            if ( ! email ) {
-                jQuery('#email-error').show()
-                submit_button_newsletter.removeClass('loading')
-                email_input.focus(function(){
-                    jQuery('#email-error').hide()
-                })
-                submit_button_newsletter.prop('disabled', false)
-                spinner.removeClass('active')
-                return;
-            }
-
-            let form_data = {
-                fname: fname,
-                lname: lname,
-                email: email
-            }
-
-            jQuery.ajax({
-                type: "POST",
-                data: JSON.stringify({ action: 'newsletter', parts: jsObject.parts, data: form_data }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
-                }
-            })
-                .done(function(response){
-                    jQuery('.loading-spinner').removeClass('active')
-                    console.log(response)
-
-                })
-                .fail(function(e) {
-                    console.log(e)
-                    jQuery('#error').html(e)
-                })
-        })
 
         /* CONTACT FORM */
         let submit_button_contact = jQuery('#submit-button-contact')
@@ -525,12 +430,26 @@ $content = l1a_porch_fields();
                 return;
             }
 
+            let location_input = jQuery('#contact-location')
+            let location = location_input.val()
+            if ( ! location ) {
+                jQuery('#contact-location-error').show()
+                submit_button_contact.removeClass('loading')
+                email_input.focus(function(){
+                    jQuery('#phone-error').hide()
+                })
+                submit_button_contact.prop('disabled', false)
+                spinner.removeClass('active')
+                return;
+            }
+
             let comment = jQuery('#contact-comment').val()
 
             let form_data = {
                 name: name,
                 email: email,
                 phone: phone,
+                location: location,
                 comment: comment
             }
 
@@ -592,6 +511,16 @@ $content = l1a_porch_fields();
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
     }
+    .social-button {
+        padding:1em;
+        background: black;
+        color: white;
+    }
+    .social-button:hover {
+        outline: 2px solid #1d82ff;
+        color: lightblue;
+        transition: none;
+    }
 
     @media only screen and (max-width: 700px) {
         input.input-text {
@@ -603,6 +532,8 @@ $content = l1a_porch_fields();
             max-width: 100%;
         }
     }
+
+
 
     .submit-button {
         padding: 1.5rem;
@@ -641,9 +572,15 @@ $content = l1a_porch_fields();
         <div class="row text-center">
             <div class="col">
                 <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                    <?php if ( ! empty( $content['facebook_url']['value'] ?? '' ) ) : ?>
+                        <li class="list-inline-item"><a href="<?php echo $content['facebook_url']['value'] ?? '' ?>" class="p-2"><i class="fa fa-facebook"></i></a></li>
+                    <?php endif; ?>
+                    <?php if ( ! empty( $content['twitter_url']['value'] ?? '' ) ) : ?>
+                        <li class="list-inline-item"><a href="<?php echo $content['twitter_url']['value'] ?? '' ?>" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                    <?php endif; ?>
+                    <?php if ( ! empty( $content['instagram_url']['value'] ?? '' ) ) : ?>
+                        <li class="list-inline-item"><a href="<?php echo $content['instagram_url']['value'] ?? '' ?>" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

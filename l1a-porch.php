@@ -284,30 +284,89 @@ if ( ! function_exists( 'l1a_porch_fields' ) ) {
                 'type' => 'url',
             ],
             [
-                'label' => 'Why Section',
-                'type' => 'break',
-            ],
-            [
-                'label' => 'Testimonies Section',
+                'label' => 'Testimony 1',
                 'type' => 'break',
             ],
             'testimony_1_title' => [
                 'label' => 'Testimony #1 - Title',
-                'value' => '',
+                'value' => 'B in Southern California',
                 'type' => 'text',
             ],
             'testimony_1_story' => [
                 'label' => 'Testimony #1 - Story',
-                'value' => '',
+                'value' => 'PRAISE JESUS for new life in Christ & another baptism! Our Orange County teammate Tim H offered prayer to “B” (Iranian 🇮🇷) in his home. After B received prayer, Tim H shared the gospel & B repented of his sin and believed in Jesus for forgiveness.</p>
+
+On Friday night, Tim baptized B in front of their "Here To There Church" family at Corona Del Mar Beach. B is being discipled in the Word as he grows in Christ & is part of this thriving community of believers in Irvine, CA.',
                 'type' => 'textarea',
             ],
             'testimony_1_url' => [
                 'label' => 'Testimony #1 - Image URL',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/map-la.png',
+                'type' => 'url',
+            ],
+            [
+                'label' => 'Testimony 2',
+                'type' => 'break',
+            ],
+            'testimony_2_title' => [
+                'label' => 'Testimony #2 - Title',
+                'value' => 'Kevin in Northern Michigan',
+                'type' => 'text',
+            ],
+            'testimony_2_story' => [
+                'label' => 'Testimony #2 - Story',
+                'value' => 'I thank God that His timing is so perfect and that He equipped me through His Holy Spirit.
+
+I also thank Him for the men who shared the tools with me that they learned from Big Life. It has given me priceless information about how to talk to people and share the good news with them.
+
+So, thank you to all of you who have had a part in helping change my life, from prayers, to those men who contacted me in prison and sent learning materials.',
+                'type' => 'textarea',
+            ],
+            'testimony_2_url' => [
+                'label' => 'Testimony #2 - Image URL',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/map-mich.png',
+                'type' => 'url',
+            ],
+            [
+                'label' => 'Testimony 3',
+                'type' => 'break',
+            ],
+            'testimony_3_title' => [
+                'label' => 'Testimony #3 - Title',
+                'value' => 'Amanda in Tampa',
+                'type' => 'text',
+            ],
+            'testimony_3_story' => [
+                'label' => 'Testimony #3 - Story',
+                'value' => 'Ms C has been attending our zoom "Unstuck Tuesday Home-church" for about 6 months now. We read the great commission as our vision weekly together. Ms C invited Miss M, her Jewish new believer friend to join. Ms M was touched by the Spirit to be baptized. After a few months Ms C & I baptized her with her family in attendance at the local beach in Tampa!!',
+                'type' => 'textarea',
+            ],
+            'testimony_3_url' => [
+                'label' => 'Testimony #3 - Image URL',
+                'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/map-tampa.png',
+                'type' => 'url',
+            ],
+            [
+                'label' => 'Testimony 4',
+                'type' => 'break',
+            ],
+            'testimony_4_title' => [
+                'label' => 'Testimony #4 - Title',
+                'value' => 'Shane in Southern California',
+                'type' => 'text',
+            ],
+            'testimony_4_story' => [
+                'label' => 'Testimony #4 - Story',
+                'value' => 'PRAISE JESUS! 60+ repented & were baptized in Huntington Beach last night!! One of the new leaders we’re discipling in Newport baptized 9 people!',
+                'type' => 'textarea',
+            ],
+            'testimony_4_url' => [
+                'label' => 'Testimony #4 - Image URL',
                 'value' => trailingslashit( plugin_dir_url(__FILE__) ) . 'home-2/assets/temp_images/map-socal.png',
                 'type' => 'url',
             ],
             [
-                'label' => 'Get Started',
+                'label' => 'Horizontal Image Slider',
                 'type' => 'break',
             ],
             'slider_1' => [
