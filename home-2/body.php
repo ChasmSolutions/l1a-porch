@@ -17,6 +17,7 @@ $content = l1a_porch_fields();
                 <li class="nav-item"><a class="nav-link" href="#section-testimonials">Testimonials</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-faqs">FAQ's</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-contact">Get Started</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo trailingslashit( site_url() ) ?>contacts">Login</a></li>
             </ul>
         </div>
     </div>
