@@ -71,24 +71,26 @@ class L1a_Porch_Home_2 extends DT_Magic_Url_Base
 
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
         $allowed_js = [];
-//        $allowed_js[] = 'jquery-cookie';
-//        $allowed_js[] = 'mapbox-gl';
-//        $allowed_js[] = 'mapbox-cookie';
+        $allowed_js[] = 'jquery-cookie';
+        $allowed_js[] = 'mapbox-gl';
+        $allowed_js[] = 'mapbox-cookie';
         return $allowed_js;
     }
 
     public function dt_magic_url_base_allowed_css( $allowed_css ) {
         $allowed_css = [];
-//        $allowed_css[] = 'mapbox-gl-css';
+        $allowed_css[] = 'mapbox-gl-css';
         return $allowed_css;
     }
 
     public function header_javascript(){
         require_once( 'header.php' );
+        DT_Mapbox_API::load_header();
+        DT_Mapbox_API::load_mapbox_search_widget();
     }
 
     public function body(){
-
+        DT_Mapbox_API::geocoder_scripts();
         require_once( 'body.php' );
     }
 

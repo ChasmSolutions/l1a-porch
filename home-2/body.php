@@ -1,6 +1,5 @@
 <?php
 $content = l1a_porch_fields();
-
 ?>
 
 <!-- nav -->
